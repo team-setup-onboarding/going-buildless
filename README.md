@@ -11,41 +11,13 @@ Why should we leverage the built-in libraries of modern web browsers? To create 
 
 No compilation step, no npm install, none of the faff. All of the interactive web components.
 
-## Examining the native web component
+I've made this as simple as I can to illustrate the points, see disclaimer at the end.
 
-https://github.com/cpbirch/going-buildless/blob/3a5683e208b91c910132dbbf065ee44752d72ec3/index.html#L11-L14
-
-For this example, I created a native web component called `<zoe-list-item>`.  It's purpose is to present data with circles which vary in size and color as a nice list.  Click the button to cycle the colours.
-
-There are two different ways of providing input.  The first is by attributes on the custom element itself: on line 11 I can set the circle size (1 to 10) and the colour (0 to 3).  Try changing these values to see what happens.
-
-The second way to provide input is by inserting any valid html (or web component) and specifying it's 'slot'.  On line 12, try changing the `span` to some other html.  The important identifier is the `slot` attribute.
-
-`<slot>`'s are just placeholders which allow you to add your own markup within a custom component.  It allows two different DOM trees to be composed together.
-
-## A bit about encapsulation
-
-If the buildless aspect hasn't grabbed you... and the simple composability hasn't yet whet your appetite... then how about redefining the `div` style? We can see how it's limited to the scope of the shadow DOM only.
-
-https://github.com/cpbirch/going-buildless/blob/61c8a211f30acebe69ff9242a5e06813ccdaf25f/zoe-list-item.js#L15-L20
-
-In line 16 to 20 above, we redefine `div` to have a grid layout with four columns.  Yet somehow this doesn't affect the layout of `index.html`.  How is this possible?  This is the beauty of the Shadow DOM and it's main difference from React and it's Virtual DOM.
-
-<img width="1468" alt="image" src="https://github.com/cpbirch/going-buildless/assets/9862587/a83d2a07-debf-4ab5-9603-6238d311e072">
-
-In the image above, you can see the DOM and how it's identical to the markup in [index.html](https://github.com/cpbirch/going-buildless/blob/61c8a211f30acebe69ff9242a5e06813ccdaf25f/index.html) but there is this interesting thing called *#shadow-root*
-
-<img width="490" alt="image" src="https://github.com/cpbirch/going-buildless/assets/9862587/94553916-571f-4193-8fb9-7a7f0452d004">
-
-Opening the shadow root shows the encapsulated markup.  In this Firefox debugger, clicking on the slot reveal arrow simply directs the focus on the span in the actual DOM.
-
-So now, it feels like real programming.  Even using javascript, the only way to manipulate my component is to append child elements (they'll be put in slots) or set the defined attribute values.  If you want circles to be triangles, or colour them blue then you must edit the component itself.  Conversely, any definitions I create in my component will not affect any web page or application it's included in.
-
-To learn more visit https://developer.mozilla.org/en-US/docs/Web/API/Web_components and https://lit.dev/ or watch a [Scott Davis video](https://youtu.be/s-nRD5EPq2k?si=hM4h8kksNYNzqc_b)
+Scroll about half way down to the *Try it for yourself* section if you don't like history.
 
 # History Lesson
 
-In Scott's video (link above) he describes web development as "pathologically global".  The DOM itself is a mutable global variable. Any style sheet loaded is in the global namespace. Any javascript loaded by the page can manipulate the DOM.  A number of frameworks have been developed to solve this problem, by attempting to introduce encapsulation and make it easier to build reusable components.  Arguably, the most successful of these frameworks is React.
+In [Scott Davis' video about web components](https://youtu.be/s-nRD5EPq2k?si=hM4h8kksNYNzqc_b) he describes web development as "pathologically global".  The DOM itself is a mutable global variable. Any style sheet loaded is in the global namespace. Any javascript loaded by the page can manipulate the DOM.  A number of frameworks have been developed to solve this problem, by attempting to introduce encapsulation and make it easier to build reusable components.  Arguably, the most successful of these frameworks is React.
 
 ## The problems with React
 
@@ -83,9 +55,49 @@ Using Google’s small library ( https://lit.dev 5kb ) I can easily write native
 
 But most of all, I love that I can write a bit of code, save it, reload it in the browser and see my change instantly.  No need to wait for a compilation step.  No complicated tooling.
 
-## Try it for yourself
+# Try it for yourself
 
 Open either of the two files (index.html or  zoe-list-item.js), make a change and save it.  Click reload in the browser and see the change instantly.
 
 This demo is intended to be trivial but can easily be extended to use the Fetch API to get server side data which could then be rendered by a component.
+
+## Examining the native web component
+
+https://github.com/cpbirch/going-buildless/blob/3a5683e208b91c910132dbbf065ee44752d72ec3/index.html#L11-L14
+
+For this example, I created a native web component called `<zoe-list-item>`.  It's purpose is to present data with circles which vary in size and color as a nice list.  Click the button to cycle the colours.
+
+There are two different ways of providing input.  The first is by attributes on the custom element itself: on line 11 I can set the circle size (1 to 10) and the colour (0 to 3).  Try changing these values to see what happens.
+
+The second way to provide input is by inserting any valid html (or web component) and specifying it's 'slot'.  On line 12, try changing the `span` to some other html.  The important identifier is the `slot` attribute.
+
+`<slot>`'s are just placeholders which allow you to add your own markup within a custom component.  It allows two different DOM trees to be composed together.
+
+## A bit about encapsulation
+
+If the buildless aspect hasn't grabbed you... and the simple composability hasn't yet whet your appetite... then how about redefining the `div` style? We can see how it's limited to the scope of the shadow DOM only.
+
+https://github.com/cpbirch/going-buildless/blob/61c8a211f30acebe69ff9242a5e06813ccdaf25f/zoe-list-item.js#L15-L20
+
+In line 16 to 20 above, we redefine `div` to have a grid layout with four columns.  Yet somehow this doesn't affect the layout of `index.html`.  How is this possible?  This is the beauty of the Shadow DOM and it's main difference from React and it's Virtual DOM.
+
+<img width="1468" alt="image" src="https://github.com/cpbirch/going-buildless/assets/9862587/a83d2a07-debf-4ab5-9603-6238d311e072">
+
+In the image above, you can see the DOM and how it's identical to the markup in [index.html](https://github.com/cpbirch/going-buildless/blob/61c8a211f30acebe69ff9242a5e06813ccdaf25f/index.html) but there is this interesting thing called *#shadow-root*
+
+<img width="490" alt="image" src="https://github.com/cpbirch/going-buildless/assets/9862587/94553916-571f-4193-8fb9-7a7f0452d004">
+
+Opening the shadow root shows the encapsulated markup.  In this Firefox debugger, clicking on the slot reveal arrow simply directs the focus on the span in the actual DOM.
+
+So now, it feels like real programming.  Even using javascript, the only way to manipulate my component is to append child elements (they'll be put in slots) or set the defined attribute values.  If you want circles to be triangles, or colour them blue then you must edit the component itself.  Conversely, any definitions I create in my component will not affect any web page or application it's included in.
+
+To learn more visit https://developer.mozilla.org/en-US/docs/Web/API/Web_components and https://lit.dev/ or watch a [Scott Davis video](https://youtu.be/s-nRD5EPq2k?si=hM4h8kksNYNzqc_b)
+
+### Disclaimer
+
+In the real world, there probably would be some compilation step.
+* You'll want to be able to execute tests and you won't want them in your final artefact
+* There'll probably be some awkward npm package / path management
+* You'll want to minify you js
+* Typescript... (I prefer js but I appear to be in the minority)
 
