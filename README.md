@@ -5,13 +5,13 @@ Why should we leverage the built-in libraries of modern web browsers? To create 
 
 ## The problems with React
 
-These days, complex single page web applications are built by multiple teams.  I’ve worked at several clients where there is a team which manages the web app framework (the container) and then multiple teams deploy their React components within the container.  Following the pattern, teams can often make changes and release on demand (following good CI/CD practices) and expect the complex UI to still work.
+These days, complex single page web applications are built by multiple teams.  I’ve worked at several clients where one team manages the web app framework (the container) and then multiple teams deploy their React components within the container.  Teams can usually make changes and release on demand (following good CI/CD practices) but they run into problems when they want to upgrade the version of React they are using.
 
-The big problem comes when you want to update the React version.  By using React, the benefits of the framework come at the cost of a global namespace and the need for multiple teams to be tied to the current React version.  The container team often has to coordinate all other teams to upgrade in lockstep.
+The benefits of the React framework come at the cost of a global namespace and the need for multiple teams to be tied to the current React version.  The container team often has to coordinate all other teams to upgrade in lockstep.
 
-In addition, I’ve always followed the safe practice of prefixing my CSS with my team name or my unique container name, so I don’t clash with anyone else.  The same for my components.
+Scoping is a problem with React.  I’ve always followed the safe practice of prefixing my CSS with my team name or my unique container name, so I don’t clash with anyone else.  The same for my components.
 
-In addition to the global scope of naming, I’ve often come across the complexity of global state (Redux anyone?).  Despite my best effort to keep my state private, someone always goes and subscribes to it, creating a dependency that is now out of my control and that I don’t have tests for.
+In addition to the global scope of naming, I’ve often come across the complexity of global state (Redux anyone?).  Despite my best effort to keep my state private, someone always goes and subscribes to it, creating a dependency that is now out of my control and that I don’t have tests for.  I make a change, my pipeline is green and then my smoke test tells me the website is broken.
 
 Overall, programming web applications feels different to serverside programming because I’m no longer able to have well encapsulated software components, exposing only the behaviour I want them to while hiding the implementation.
 
