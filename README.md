@@ -3,6 +3,26 @@ A short introduction to native web components.
 
 Why should we leverage the built-in libraries of modern web browsers? To create native web-components which are interoperable and future-ready of course!
 
+## TLDR;
+
+1. Clone this repo
+2. From the root directory of the repo, start a python webserver: `python3 -m http.server`
+3. Browse http://localhost:8000/index.html
+
+No compilation step, no npm install, none of the faff. All of the interactive web components.
+
+## Examining the native web component
+
+https://github.com/cpbirch/going-buildless/blob/3a5683e208b91c910132dbbf065ee44752d72ec3/index.html#L11-L14
+
+For this example, I created a native web component called `<zoe-list-item>`.  It's purpose is to present data with circles which vary in size and color as a nice list.  Click on the button at the end cycles the colours.
+
+There are two different ways of providing input.  The first is by attributes on the custom element itself: on line 11 I can set the circle size (1 to 10) and the colour (0 to 3).  Try changing these values to see what happens.
+
+The second way to provide input is by inserting any valid html (or web component) and specifying it's 'slot'.  On line 12, try changing the `span` to some other html.  The important identifier is the `slot` attribute.
+
+`<slot>`'s are just placeholders which allow you to add your own markup within a custom component.  It allows two different DOM trees to be composed together.
+
 ## The problems with React
 
 These days, complex single page web applications are built by multiple teams.  I’ve worked at several clients where one team manages the web app framework (the container) and then multiple teams deploy their React components within the container.  Teams can usually make changes and release on demand (following good CI/CD practices) but they run into problems when they want to upgrade the version of React they are using.
