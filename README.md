@@ -5,13 +5,17 @@ Why should we leverage the built-in libraries of modern web browsers? To create 
 
 ## TLDR;
 
-1. Clone this repo
-2. From the root directory of the repo, start a python webserver: `python3 -m http.server`
-3. Browse http://localhost:8000/index.html
+Demonstrate a path to write web applications and web components without complex build tools, transpilers and frameworks to mitigate the "pathalogical tendency to global scope" in historical web implementations.
+
+I've made this as simple as I can to illustrate the points, see disclaimer at the end.
 
 No compilation step, no npm install, none of the faff. All of the interactive web components.
 
-I've made this as simple as I can to illustrate the points, see disclaimer at the end.
+## Instructions to run this code;
+
+1. Clone this repo
+2. From the root directory of the repo, start a python webserver: `python3 -m http.server`
+3. Browse http://localhost:8000/index.html
 
 Scroll about half way down to the *Try it for yourself* section if you don't like history.
 
@@ -47,7 +51,7 @@ But it’s been legacy code since 2019.  Why?
 
 ## The Shadow DOM
 
-Since 2004, the W3C has had competition from https://whatwg.org/ - now the defacto web standards organisation.  Since 2011 the modern web components standards have been published by https://whatwg.org/ and available in Chrome and Firefox.  Since 2019, the standards have been implemented by Edge (>v72), Chrome, Firfox and Safari.  These standards cover javascript (ES6) and the DOM, and branched away from a single global DOM to use the Shadow DOM instead.
+Since 2004, the W3C has had competition from https://whatwg.org/ - now the defacto web standards organisation.  Since 2011 the modern web components standards have been published by https://whatwg.org/ and available in Chrome and Firefox.  Since 2019, the standards have been implemented by Edge (>v72), Chrome, Firefox and Safari.  These standards cover javascript (ES6) and the DOM, and branched away from a single global DOM to use the Shadow DOM instead.
 
 I love the Shadow DOM.  It makes programming web application feel like… well, programming.  Just like writing some Kotlin.  Or Python.  Using ES6 and the libraries / APIs built into modern browsers, I now have scoped variables and I have a scoped DOM.  I can write my web components with css styles which are contained within my component, having no effect outside it.  I can hide how my component is implemented but I can provide a clean interface to customise the component.  My component can store and manage it’s own state, I can determine which events I want to emit and which I want to keep contained.
 
@@ -96,8 +100,8 @@ To learn more visit https://developer.mozilla.org/en-US/docs/Web/API/Web_compone
 ### Disclaimer
 
 In the real world, there probably would be some compilation step.
-* You'll want to be able to execute tests and you won't want them in your final artefact
-* There'll probably be some awkward npm package / path management
-* You'll want to minify you js
-* Typescript... (I prefer js but I appear to be in the minority)
+* You'll want to execute tests but you shouldn't want them in your final artefact.
+* There will probably be some awkward npm package / path management in a real web application.
+* You'll want to minify the js for deployment in production.
+* Typescript... (I prefer JS but I appear to be in the minority).
 
