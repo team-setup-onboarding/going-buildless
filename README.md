@@ -5,7 +5,7 @@ Why should we leverage the built-in libraries of modern web browsers? To create 
 
 ## TLDR;
 
-Demonstrate a path to write web applications and web components without complex build tools, transpilers and frameworks to mitigate the "pathalogical tendency to global scope" in historical web implementations.
+I hope to show a way to create web components by leveraging the powerful APIs built into modern web browsers.  The web development experience can feel like server side programming, with good encapsulation, scoping & modularity, fast feedback and a REPL like approach.  Complex build tools, transpilers and frameworks, which mitigate the "pathalogical tendency to global scope", are no longer needed.
 
 I've made this as simple as I can to illustrate the points, see disclaimer at the end.
 
