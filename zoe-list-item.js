@@ -13,19 +13,19 @@ class ZoeListItem extends LitElement {
   static shadowRootOptions = { ...LitElement.shadowRootOptions, mode: "closed" };
   
   static styles = css`
-      div {
+      p {
         display: grid;
         grid-template-columns: 1fr 5fr 4fr 1fr;
         margin: 5% 10%;
       }
       svg {
         display: inline;
-	height: 20px;
+        height: 20px;
       }
       .grey-rect {
         border-radius: 10px;
         background-color: #eeeeee;
-	height: 100%;
+        height: 100%;
         padding: 2px 10px;
         margin: 0 10px;
       }
@@ -48,7 +48,7 @@ class ZoeListItem extends LitElement {
 
   render() {
     return html`
-      <div>
+      <p>
         <svg viewBox="0 0 20 20">
             <circle cx="10" cy="10" r="${this.circleSize}" style="fill: ${this.getColour()}" />
         </svg>
@@ -57,7 +57,7 @@ class ZoeListItem extends LitElement {
           <slot name="quantifier"></slot>
         </span>
         <button @click="${() => (this.colour = this.colour + 1)}">&gt;</button>
-      </div>
+      </p>
     `;
   }
 }
