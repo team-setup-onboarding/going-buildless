@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title>Going build-less, a webcomponents example</title>
-    <script type="module" src="./zoe-list-item.js"></script>
+    <script type="module" src="diet-list-item.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="An example of modern web components using the shadow dom, demonstrating how components are rendered with accessible html.">
     <meta charset="UTF-8">
@@ -10,22 +10,22 @@
   <body style='font-family: "Gill Sans", sans-serif; width: 800px; margin: auto'>
     <main>
       <h1>Going Build-less</h1>
-      <zoe-list-item circle-size="10" colour-index="3">
+      <diet-list-item circle-size="10" colour-index="3">
         <span slot="description">Gut microbiome</span>
         <span slot="quantifier">Excellent</span>
-      </zoe-list-item>
-      <zoe-list-item colour-index="0">
+      </diet-list-item>
+      <diet-list-item colour-index="0">
         <span slot="description">Diet quality</span>
         <span slot="quantifier">Poor</span>
-      </zoe-list-item>
-      <zoe-list-item>
+      </diet-list-item>
+      <diet-list-item>
         <span slot="description">Activity levels</span>
         <span slot="quantifier">No data</span>
-      </zoe-list-item>
-      <zoe-list-item>
+      </diet-list-item>
+      <diet-list-item>
         <span slot="description">Stress levels</span>
         <span slot="quantifier">No data</span>
-      </zoe-list-item>
+      </diet-list-item>
     </main>
   </body>
 </html>

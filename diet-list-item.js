@@ -1,6 +1,6 @@
 import {html, css, LitElement} from 'https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js';
 
-class ZoeListItem extends LitElement {
+class DietListItem extends LitElement {
   static properties = {
     circleSize: {
       type: Number,
@@ -39,11 +39,11 @@ class ZoeListItem extends LitElement {
     this.darkgreen = "#209900";
     this.lightgreen = "#60df4c";
     this.amber = "#fac828";
-    this.zoecolours = [this.red, this.amber, this.darkgreen, this.lightgreen];
+    this.dietcolours = [this.red, this.amber, this.darkgreen, this.lightgreen];
   }
 
   getColour() {
-    return this.zoecolours[this.colour % 4];
+    return this.dietcolours[this.colour % 4];
   }
 
   render() {
@@ -61,5 +61,5 @@ class ZoeListItem extends LitElement {
     `;
   }
 }
-customElements.define('zoe-list-item', ZoeListItem);
+customElements.define('diet-list-item', DietListItem);
 
